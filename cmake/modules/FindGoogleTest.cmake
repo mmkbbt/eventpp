@@ -65,9 +65,14 @@ find_package_handle_standard_args(
         GOOGLEMOCK_INCLUDE_DIR
 )
 
+if(NOT MSVC)
+  set(PThreadLib -pthread)
+endif()
+
 if(GOOGLETEST_FOUND)
     set(
         GOOGLETEST_LIBRARIES
+        ${PThreadLib}
         ${GOOGLETEST_LIBRARY}
         ${GOOGLETEST_MAIN_LIBRARY}
         ${GOOGLEMOCK_LIBRARY}
